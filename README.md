@@ -16,7 +16,8 @@
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/auto-avsr-audio-visual-speech-recognition/audio-visual-speech-recognition-on-lrs3-ted)](https://paperswithcode.com/sota/audio-visual-speech-recognition-on-lrs3-ted?p=auto-avsr-audio-visual-speech-recognition)
 
 </div>
-* add AVSR model code by pyh
+
+😀 add AVSR model code by pyh
 
 ## Introduction
 
