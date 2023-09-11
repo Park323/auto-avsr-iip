@@ -38,7 +38,7 @@ def main(cfg):
 
     # Set modules and trainer
     if cfg.data.modality == "audiovisual":
-        from lightning_pyh import AVModelModule
+        from lightning_av import AVModelModule
         modelmodule = AVModelModule(cfg)
     else:
         modelmodule = ModelModule(cfg)
