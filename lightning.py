@@ -27,7 +27,6 @@ class ModelModule(LightningModule):
             self.backbone_args = self.cfg.model.audio_backbone
         elif self.cfg.data.modality == "video":
             self.backbone_args = self.cfg.model.visual_backbone
-
         self.text_transform = TextTransform()
         self.token_list = self.text_transform.token_list
         self.model = E2E(len(self.token_list), self.backbone_args)
@@ -38,11 +37,7 @@ class ModelModule(LightningModule):
                 self.cfg.ckpt_path, map_location=lambda storage, loc: storage
             )
             if self.cfg.transfer_frontend:
-                tmp_ckpt = {
-                    k: v
-                    for k, v in ckpt["model_state_dict"].items()
-                    if k.startswith("trunk.") or k.startswith("frontend3D.")
-                }
+                tmp_ckpt = {k: v for k, v in ckpt["model_state_dict"].items() if k.startswith("trunk.") or k.startswith("frontend3D.")}
                 self.model.encoder.frontend.load_state_dict(tmp_ckpt)
             else:
                 self.model.load_state_dict(ckpt)

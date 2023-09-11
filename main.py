@@ -16,10 +16,10 @@ os.environ["WANDB_SILENT"] = "true"
 logging.basicConfig(level=logging.WARNING)
 
 
-@hydra.main(config_path="conf", config_name="config")
+@hydra.main(config_path="./conf", config_name="config")
 def main(cfg):
     seed_everything(42, workers=True)
-    cfg.slurm_job_id = os.environ["SLURM_JOB_ID"]
+    #cfg.slurm_job_id = os.environ["SLURM_JOB_ID"]
     cfg.gpus = torch.cuda.device_count()
 
     checkpoint = ModelCheckpoint(
@@ -37,7 +37,12 @@ def main(cfg):
     wandb_logger = hydra.utils.instantiate(cfg.logger) if cfg.log_wandb else None
 
     # Set modules and trainer
-    modelmodule = ModelModule(cfg)
+    if cfg.data.modality == "audiovisual":
+        from lightning_pyh import AVModelModule
+        modelmodule = AVModelModule(cfg)
+    else:
+        modelmodule = ModelModule(cfg)
+        
     datamodule = DataModule(cfg)
     trainer = Trainer(
         **cfg.trainer,
@@ -67,6 +72,7 @@ def main(cfg):
         modelmodule.model.load_state_dict(
             torch.load(cfg.ckpt_path, map_location=lambda storage, loc: storage)
         )
+        #print('Model Load Done@@@@@')
         trainer.test(model=modelmodule, datamodule=datamodule)
 
 

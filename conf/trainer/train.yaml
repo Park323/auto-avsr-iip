@@ -9,4 +9,4 @@ limit_val_batches: 1.0
 accumulate_grad_batches: 1
 gradient_clip_val: 5.0
 replace_sampler_ddp: False
-resume_from_checkpoint:
+resume_from_checkpoint: /home/nas4/user/yh/auto_avsr/outputs/2023-09-04/18-24-48/lrs3/testaudio/epoch=35.ckpt

@@ -75,7 +75,7 @@ class DataModule(LightningDataModule):
             audio_transform=AudioTransform("train"),
             video_transform=VideoTransform("train"),
         )
-        sampler = ByFrameCountSampler(train_ds, self.cfg.data.max_frames)
+        sampler = ByFrameCountSampler(train_ds, self.cfg.data.max_frames, self.cfg.data.max_sentences)
         if self.total_gpus > 1:
             sampler = DistributedSamplerWrapper(sampler)
         else:
@@ -93,7 +93,7 @@ class DataModule(LightningDataModule):
             video_transform=VideoTransform("val"),
         )
         sampler = ByFrameCountSampler(
-            val_ds, self.cfg.data.max_frames_val, shuffle=False
+            val_ds, self.cfg.data.max_frames_val, self.cfg.data.max_sentences, shuffle=False
         )
         if self.total_gpus > 1:
             sampler = DistributedSamplerWrapper(sampler, shuffle=False, drop_last=True)
