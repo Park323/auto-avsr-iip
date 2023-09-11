@@ -172,6 +172,23 @@ We provide an [instruction](INSTRUCTION.md) that will guide you through the proc
 
 ## Model zoo
 
+Lip Reading Sentences 3 (LRS3) from Visual_Speech_Recognition_for_Multiple_Languages Github
+
+<p> </p>
+
+|     Components        |  WER |                                             url                                         |  size (MB)  |
+|:----------------------|:----:|:---------------------------------------------------------------------------------------:|:-----------:|
+|   **Visual-only**     |
+| -                     | 19.1 |[GoogleDrive](http://bit.ly/40EAtyX) or [BaiduDrive](https://bit.ly/3ZjbrV5)(key: dqsy)  |     891     |
+|   **Audio-only**      |
+| -                     | 1.0  |[GoogleDrive](http://bit.ly/3ZSdh0l) or [BaiduDrive](http://bit.ly/3Z1TlGU)(key: dvf2)   |     860     |
+|   **Audio-visual**    |
+| -                     | 0.9  |[GoogleDrive](http://bit.ly/3yRSXAn) or [BaiduDrive](http://bit.ly/3LAxcMY)(key: sai5)   |     1540    |
+| **Language models**   |
+| -                     |   -  |[GoogleDrive](http://bit.ly/3FE4XsV) or [BaiduDrive](http://bit.ly/3yRI5SY)(key: t9ep)   |     191     |
+| **Landmarks**         |
+| -                     |   -  |[GoogleDrive](https://bit.ly/33rEsax) or [BaiduDrive](https://bit.ly/3rwQSph)(key: mi3c) |     18577   |
+
 The table below contains WER on the test of LRS3.
 
 | Total Training Data             | Hours‡ |  WER  | URL                                                                                                          | Params (M) |
